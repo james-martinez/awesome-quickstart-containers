@@ -9,10 +9,10 @@ sed -i "s/vPROXY-PORT/$PROXY_PORT/g" /etc/redsocks.conf
 
 echo "Restarting redsocks and redirecting traffic via iptables"
 /etc/init.d/redsocks restart
-iptables -t nat -A OUTPUT  -p tcp --dport 21 -j REDIRECT --to-port 12345
+iptables -t nat -A OUTPUT  -p tcp --dport 80 -j REDIRECT --to-port 12345
 
 # Run app
-echo "Testing ftp access using: ftp://speedtest.tele2.net "
-curl  ftp://speedtest.tele2.net
+echo "Testing http access using: https://google.com "
+curl  https://google.com
 
 while true; do sleep 1000; done
